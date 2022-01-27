@@ -23,11 +23,27 @@ const text = [
 ]
 
 let images = '';
+let bigImage = '';
 
 for (let i = 0; i < items.length; i++) {
-    images += `<img src="./${items[i]} alt="">`;
-    console.log(images);
+    images += `<img src=./${items[i]}>`;
+
+    bigImage += `<div class="main-image">
+                    <img class="img-big" src=./${items[i]}>
+                    <div class="description">
+                        <span class="country">${title[i]}</span>
+                        <p class="country-desc">${text[i]}</p>
+                    </div>
+                </div>`;
 }
 
-let right = document.querySelector('.right');
-right.innerHTML = images;
+let thumbs = document.querySelector(".thumbs-images");
+thumbs.innerHTML = images;
+
+let big = document.querySelector(".left");
+big.innerHTML = bigImage;
+
+let currentSlide = 0;
+
+let imageActive = document.getElementsByClassName("main-image");
+imageActive[currentSlide].classList.add('active');
